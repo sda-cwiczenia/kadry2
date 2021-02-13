@@ -1,0 +1,40 @@
+<!--plik person-add.html-->
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Adding new person</title>
+</head>
+<br>
+<p th:text="#{title-add}"></p>
+</br></br>
+<form method="post" th:action="@{/kadry/dodaj}" th:object="${personDto}">
+    <label>
+        Imie:
+        <input type="text" th:field="*{firstName}">
+        <ul th:if="${#fields.hasErrors('firstName')}">
+            <li th:each="err : ${#fields.errors('firstName')}" th:text="${err}">_Input is incorrect</li>
+        </ul>
+    </label>
+
+    </br></br>
+    <label>
+        Nazwisko:
+        <input type="text" th:field="*{lastName}">
+        <ul th:if="${#fields.hasErrors('lastName')}">
+            <li th:each="err : ${#fields.errors('lastName')}" th:text="${err}">_Input is incorrect</li>
+        </ul>
+    </label>
+    </br></br>
+    <label>
+        Zarobki:
+        <input type="text" th:field="*{salary}">
+        <ul th:if="${#fields.hasErrors('salary')}">
+            <li th:each="err : ${#fields.errors('salary')}" th:text="${err}">_Input is incorrect</li>
+        </ul>
+    </label>
+
+    <button type="submit">Dodaj pracownika</button>
+</form>
+</body>
+</html>
